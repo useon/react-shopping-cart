@@ -20,7 +20,7 @@ const router = createBrowserRouter(
       ],
     },
   ],
-  { basename: '/react-shopping-cart/' },
+  { basename: '/react-shopping-cart/dist' },
 );
 
 export default router;
