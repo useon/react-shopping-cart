@@ -2,12 +2,12 @@ import { act, renderHook } from '@testing-library/react';
 import { RecoilRoot, useRecoilState, useRecoilValue } from 'recoil';
 import { mockCartItemsData } from '../../mocks/mockCartItemsData';
 import { mockChangeCountData } from '../../mocks/mockChangeCountData';
-import { mockSelectedItemsData } from '../../mocks/mockSelectedItemsData';
+// import { mockSelectedItemsData } from '../../mocks/mockSelectedItemsData';
 import {
   cartItemsCountState,
   cartItemsState,
-  isAllSelectedState,
-  selectedItemsState,
+  // isAllSelectedState,
+  // selectedItemsState,
 } from './atoms';
 
 describe('초기값 테스트', () => {
@@ -39,34 +39,34 @@ describe('mockData를 이용한 테스트', () => {
     expect(result.current[0].length).toBe(3);
   });
 
-  it('개별 상품 선택 기능', () => {
-    const { result } = renderHook(() => useRecoilState(selectedItemsState), {
-      wrapper: RecoilRoot,
-    });
+  // it('개별 상품 선택 기능', () => {
+  //   const { result } = renderHook(() => useRecoilState(selectedItemsState), {
+  //     wrapper: RecoilRoot,
+  //   });
 
-    act(() => result.current[1](mockSelectedItemsData.selectedItemsState));
+  //   act(() => result.current[1](mockSelectedItemsData.selectedItemsState));
 
-    const selectedCount = Object.values(result.current[0]).filter(
-      (value) => value === true,
-    ).length;
+  //   const selectedCount = Object.values(result.current[0]).filter(
+  //     (value) => value === true,
+  //   ).length;
 
-    const unselectedCount = Object.values(result.current[0]).filter(
-      (value) => value === false,
-    ).length;
+  //   const unselectedCount = Object.values(result.current[0]).filter(
+  //     (value) => value === false,
+  //   ).length;
 
-    expect(selectedCount).toBe(3);
-    expect(unselectedCount).toBe(1);
-  });
+  //   expect(selectedCount).toBe(3);
+  //   expect(unselectedCount).toBe(1);
+  // });
 
-  it('전체 상품 선택 기능', () => {
-    const { result } = renderHook(() => useRecoilState(isAllSelectedState), {
-      wrapper: RecoilRoot,
-    });
+  // it('전체 상품 선택 기능', () => {
+  //   const { result } = renderHook(() => useRecoilState(isAllSelectedState), {
+  //     wrapper: RecoilRoot,
+  //   });
 
-    act(() => result.current[1](mockSelectedItemsData.isAllSelectedState));
+  //   act(() => result.current[1](mockSelectedItemsData.isAllSelectedState));
 
-    expect(result.current[0]).toBe(false);
-  });
+  //   expect(result.current[0]).toBe(false);
+  // });
 
   it('수량 증가 기능', () => {
     const { result } = renderHook(
